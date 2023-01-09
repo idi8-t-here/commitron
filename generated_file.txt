@@ -1,13 +1,11 @@
-    enum Month {
-        Jan,
-        Feb,
-        Mar,
-        Apr,
-        May,
-        Jun,
-        Jul,
-        Aug,
-        Sep,
-        Oct,
-        Nov,
-        Dec,
+    let day = day.trim().to_string();
+
+    println!("Enter a month where you want the commit to start from [Jan, Feb, Mar...etc] in this exact format");
+    let mut month = String::new();
+    io::stdin()
+        .read_line(&mut month)
+        .expect("Failed to read line for month");
+    let month = month.trim().to_string();
+
+    (day, month)
+}
