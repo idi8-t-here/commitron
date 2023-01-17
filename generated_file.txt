@@ -1,11 +1,15 @@
+                "Wed" => Ok(Date::Wed),
+                "Thu" => Ok(Date::Thu),
+                "Fri" => Ok(Date::Fri),
+                "Sat" => Ok(Date::Sat),
+                "Sun" => Ok(Date::Sun),
+                _ => Err(()),
+            }
+        }
+    }
 
-fn commit_date_randomizer() -> i32 {
-    let random_increments = rand::thread_rng().gen_range(1..=6);
-    random_increments
-}
+    impl FromStr for Month {
+        type Err = ();
 
-fn function_that_does_the_job(daily_commits: i32, random_increments: i32, _day: String, _month: String) {
-    loop {
-        for _ in 0..daily_commits {
-            let output = Command::new("git")
-                .arg("push")
+        fn from_str(input: &str) -> Result<Month, Self::Err> {
+            match input {
