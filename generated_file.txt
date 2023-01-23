@@ -1,3 +1,11 @@
+fn daily_commit_amount_randomizer() -> i32 {
+    let daily_commits = rand::thread_rng().gen_range(1..=4);
+    println!("{}", daily_commits);
+    daily_commits
+}
+
+fn commit_date_randomizer() -> i32 {
+    let random_increments = rand::thread_rng().gen_range(1..=6);
     random_increments
 }
 
@@ -29,3 +37,24 @@ fn user_inputs() -> (String, String) {
         Mon,
         Tue,
         Wed,
+        Thu,
+        Fri,
+        Sat,
+        Sun,
+    }
+
+    enum Month {
+        Jan,
+        Feb,
+        Mar,
+        Apr,
+        May,
+        Jun,
+        Jul,
+        Aug,
+        Sep,
+        Oct,
+        Nov,
+        Dec,
+    }
+
