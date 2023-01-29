@@ -1,13 +1,26 @@
-                "Sep" => Ok(Month::Sep),
-                "Oct" => Ok(Month::Oct),
-                "Nov" => Ok(Month::Nov),
-                "Dec" => Ok(Month::Dec),
-                _ => Err(()),
-            }
-        }
+        Sun,
     }
 
-    println!("Enter a day where you want the commit to start from [Mon, Tue, Wed...etc] in this exact format");
-    let mut day = String::new();
-    io::stdin()
-        .read_line(&mut day)
+    enum Month {
+        Jan,
+        Feb,
+        Mar,
+        Apr,
+        May,
+        Jun,
+        Jul,
+        Aug,
+        Sep,
+        Oct,
+        Nov,
+        Dec,
+    }
+
+    impl FromStr for Date {
+        type Err = ();
+
+        fn from_str(input: &str) -> Result<Date, Self::Err> {
+            match input {
+                "Mon" => Ok(Date::Mon),
+                "Tue" => Ok(Date::Tue),
+                "Wed" => Ok(Date::Wed),
