@@ -1,3 +1,5 @@
+                .arg("origin")
+                .arg("main")
                 .stdout(Stdio::inherit())
                 .stderr(Stdio::inherit())
                 .output()
@@ -10,5 +12,3 @@
         //here will alter the random day and time 
         let _random_hour = rand::thread_rng().gen_range(1..=24);
         let _random_second = rand::thread_rng().gen_range(10..=59);
-        println!("{}", random_increments);
-        break;
