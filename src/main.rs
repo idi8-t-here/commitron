@@ -127,11 +127,6 @@ fn function_that_does_the_job(
                     return;
                 }
 
-                // Push the changes
-                if !run_command("git", &["push", "origin", "main", "--force"]) {
-                    eprintln!("Failed to push the changes");
-                    return;
-                }
             } else {
                 eprintln!("Not enough lines to select a valid segment.");
                 return;
@@ -161,10 +156,15 @@ fn function_that_does_the_job(
         //counter for the break condition
         let mut loop_counter = 0;
         loop_counter = loop_counter + 1;
-        let max_loops = 30;
+        let max_loops = 3;
         if loop_counter>=max_loops{
             break;
         }
+    }
+    // Push the changes
+    if !run_command("git", &["push", "origin", "main", "--force"]) {
+        eprintln!("Failed to push the changes");
+        return;
     }
 }
 
