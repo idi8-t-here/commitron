@@ -1,28 +1,14 @@
-}
-fn user_inputs() -> (String, String) {
-    enum Date {
-        Mon,
-        Tue,
-        Wed,
-        Thu,
-        Fri,
-        Sat,
-        Sun,
+                "Tue" => Ok(Date::Tue),
+                "Wed" => Ok(Date::Wed),
+                "Thu" => Ok(Date::Thu),
+                "Fri" => Ok(Date::Fri),
+                "Sat" => Ok(Date::Sat),
+                "Sun" => Ok(Date::Sun),
+                _ => Err(()),
+            }
+        }
     }
 
-    enum Month {
-        Jan,
-        Feb,
-        Mar,
-        Apr,
-        May,
-        Jun,
-        Jul,
-        Aug,
-        Sep,
-        Oct,
-        Nov,
-        Dec,
-    }
+    impl FromStr for Month {
+        type Err = ();
 
-    impl FromStr for Date {
