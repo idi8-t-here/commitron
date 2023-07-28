@@ -1,3 +1,9 @@
+    process::{Command, Stdio},
+};
+
+fn main() {
+    let daily_commits = daily_commit_amount_randomizer();
+    let random_increments = commit_date_randomizer();
     let (day, month) = user_inputs();
     function_that_does_the_job(daily_commits, random_increments, day, month);
 }
@@ -24,4 +30,3 @@ fn function_that_does_the_job(daily_commits: i32, random_increments: i32, _day: 
                 .stderr(Stdio::inherit())
                 .output()
                 .expect("Failed to execute git push command");
-            println!("{}", String::from_utf8_lossy(&output.stdout));
