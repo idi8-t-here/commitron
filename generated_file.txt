@@ -1,3 +1,22 @@
+
+fn daily_commit_amount_randomizer() -> i32 {
+    let daily_commits = rand::thread_rng().gen_range(1..=4);
+    println!("{}", daily_commits);
+    daily_commits
+}
+
+fn commit_date_randomizer() -> i32 {
+    let random_increments = rand::thread_rng().gen_range(1..=6);
+    random_increments
+}
+
+fn function_that_does_the_job(daily_commits: i32, random_increments: i32, _day: String, _month: String) {
+    loop {
+        for _ in 0..daily_commits {
+            let output = Command::new("git")
+                .arg("push")
+                .arg("origin")
+                .arg("main")
                 .stdout(Stdio::inherit())
                 .stderr(Stdio::inherit())
                 .output()
@@ -39,3 +58,14 @@ fn user_inputs() -> (String, String) {
         Nov,
         Dec,
     }
+
+    impl FromStr for Date {
+        type Err = ();
+
+        fn from_str(input: &str) -> Result<Date, Self::Err> {
+            match input {
+                "Mon" => Ok(Date::Mon),
+                "Tue" => Ok(Date::Tue),
+                "Wed" => Ok(Date::Wed),
+                "Thu" => Ok(Date::Thu),
+                "Fri" => Ok(Date::Fri),
