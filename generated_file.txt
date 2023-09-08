@@ -1,3 +1,69 @@
+fn function_that_does_the_job(daily_commits: i32, random_increments: i32, _day: String, _month: String) {
+    loop {
+        for _ in 0..daily_commits {
+            let output = Command::new("git")
+                .arg("push")
+                .arg("origin")
+                .arg("main")
+                .stdout(Stdio::inherit())
+                .stderr(Stdio::inherit())
+                .output()
+                .expect("Failed to execute git push command");
+            println!("{}", String::from_utf8_lossy(&output.stdout));
+            if !output.status.success() {
+                eprintln!("Error executing command: {:?}", output);
+            }
+        }
+        //here will alter the random day and time 
+        let _random_hour = rand::thread_rng().gen_range(1..=24);
+        let _random_second = rand::thread_rng().gen_range(10..=59);
+        println!("{}", random_increments);
+        break;
+    }
+}
+fn user_inputs() -> (String, String) {
+    enum Date {
+        Mon,
+        Tue,
+        Wed,
+        Thu,
+        Fri,
+        Sat,
+        Sun,
+    }
+
+    enum Month {
+        Jan,
+        Feb,
+        Mar,
+        Apr,
+        May,
+        Jun,
+        Jul,
+        Aug,
+        Sep,
+        Oct,
+        Nov,
+        Dec,
+    }
+
+    impl FromStr for Date {
+        type Err = ();
+
+        fn from_str(input: &str) -> Result<Date, Self::Err> {
+            match input {
+                "Mon" => Ok(Date::Mon),
+                "Tue" => Ok(Date::Tue),
+                "Wed" => Ok(Date::Wed),
+                "Thu" => Ok(Date::Thu),
+                "Fri" => Ok(Date::Fri),
+                "Sat" => Ok(Date::Sat),
+                "Sun" => Ok(Date::Sun),
+                _ => Err(()),
+            }
+        }
+    }
+
     impl FromStr for Month {
         type Err = ();
 
@@ -13,8 +79,3 @@
                 "Aug" => Ok(Month::Aug),
                 "Sep" => Ok(Month::Sep),
                 "Oct" => Ok(Month::Oct),
-                "Nov" => Ok(Month::Nov),
-                "Dec" => Ok(Month::Dec),
-                _ => Err(()),
-            }
-        }
