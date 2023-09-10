@@ -1,3 +1,12 @@
+                "Sep" => Ok(Month::Sep),
+                "Oct" => Ok(Month::Oct),
+                "Nov" => Ok(Month::Nov),
+                "Dec" => Ok(Month::Dec),
+                _ => Err(()),
+            }
+        }
+    }
+
     println!("Enter a day where you want the commit to start from [Mon, Tue, Wed...etc] in this exact format");
     let mut day = String::new();
     io::stdin()
@@ -11,4 +20,3 @@
         .read_line(&mut month)
         .expect("Failed to read line for month");
     let month = month.trim().to_string();
-
