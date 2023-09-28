@@ -1,24 +1,45 @@
+use std::fs::File;
+use rand::Rng;
+use std::str::FromStr;
+use std::{
+    io,
+    process::{Command, Stdio},
+};
+
+fn main() {
+    let daily_commits = daily_commit_amount_randomizer();
+    let random_increments = commit_date_randomizer();
+    let (day, month) = user_inputs();
+    function_that_does_the_job(daily_commits, random_increments, day, month);
+}
+
+fn daily_commit_amount_randomizer() -> i32 {
+    let daily_commits = rand::thread_rng().gen_range(1..=4);
+    println!("{}", daily_commits);
+    daily_commits
+}
+
+fn commit_date_randomizer() -> i32 {
+    let random_increments = rand::thread_rng().gen_range(1..=6);
+    random_increments
+}
+
+fn function_that_does_the_job(daily_commits: i32, random_increments: i32, _day: String, _month: String) {
+    loop {
+        for _ in 0..daily_commits {
+            let output = Command::new("git")
+                .arg("push")
+                .arg("origin")
+                .arg("main")
+                .stdout(Stdio::inherit())
+                .stderr(Stdio::inherit())
+                .output()
+                .expect("Failed to execute git push command");
+            println!("{}", String::from_utf8_lossy(&output.stdout));
+            if !output.status.success() {
+                eprintln!("Error executing command: {:?}", output);
+            }
+        }
+        //here will alter the random day and time 
         let _random_hour = rand::thread_rng().gen_range(1..=24);
         let _random_second = rand::thread_rng().gen_range(10..=59);
-        println!("{}", random_increments);
-        break;
-    }
-}
-fn user_inputs() -> (String, String) {
-    enum Date {
-        Mon,
-        Tue,
-        Wed,
-        Thu,
-        Fri,
-        Sat,
-        Sun,
-    }
-
-    enum Month {
-        Jan,
-        Feb,
-        Mar,
-        Apr,
-        May,
-        Jun,
