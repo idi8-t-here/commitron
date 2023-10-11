@@ -1,14 +1,15 @@
-                "Aug" => Ok(Month::Aug),
-                "Sep" => Ok(Month::Sep),
-                "Oct" => Ok(Month::Oct),
-                "Nov" => Ok(Month::Nov),
-                "Dec" => Ok(Month::Dec),
-                _ => Err(()),
-            }
-        }
     }
 
-    println!("Enter a day where you want the commit to start from [Mon, Tue, Wed...etc] in this exact format");
-    let mut day = String::new();
-    io::stdin()
-        .read_line(&mut day)
+    enum Month {
+        Jan,
+        Feb,
+        Mar,
+        Apr,
+        May,
+        Jun,
+        Jul,
+        Aug,
+        Sep,
+        Oct,
+        Nov,
+        Dec,
