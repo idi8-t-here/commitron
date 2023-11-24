@@ -1,18 +1,13 @@
-                "Dec" => Ok(Month::Dec),
-                _ => Err(()),
-            }
-        }
-    }
+    process::{Command, Stdio},
+};
 
-    println!("Enter a day where you want the commit to start from [Mon, Tue, Wed...etc] in this exact format");
-    let mut day = String::new();
-    io::stdin()
-        .read_line(&mut day)
-        .expect("Failed to read line for day");
-    let day = day.trim().to_string();
+fn main() {
+    let daily_commits = daily_commit_amount_randomizer();
+    let random_increments = commit_date_randomizer();
+    let (day, month) = user_inputs();
+    function_that_does_the_job(daily_commits, random_increments, day, month);
+}
 
-    println!("Enter a month where you want the commit to start from [Jan, Feb, Mar...etc] in this exact format");
-    let mut month = String::new();
-    io::stdin()
-        .read_line(&mut month)
-        .expect("Failed to read line for month");
+fn daily_commit_amount_randomizer() -> i32 {
+    let daily_commits = rand::thread_rng().gen_range(1..=4);
+    println!("{}", daily_commits);
