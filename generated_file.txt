@@ -1,3 +1,4 @@
+        Nov,
         Dec,
     }
 
@@ -15,44 +16,3 @@
                 "Sun" => Ok(Date::Sun),
                 _ => Err(()),
             }
-        }
-    }
-
-    impl FromStr for Month {
-        type Err = ();
-
-        fn from_str(input: &str) -> Result<Month, Self::Err> {
-            match input {
-                "Jan" => Ok(Month::Jan),
-                "Feb" => Ok(Month::Feb),
-                "Mar" => Ok(Month::Mar),
-                "Apr" => Ok(Month::Apr),
-                "May" => Ok(Month::May),
-                "Jun" => Ok(Month::Jun),
-                "Jul" => Ok(Month::Jul),
-                "Aug" => Ok(Month::Aug),
-                "Sep" => Ok(Month::Sep),
-                "Oct" => Ok(Month::Oct),
-                "Nov" => Ok(Month::Nov),
-                "Dec" => Ok(Month::Dec),
-                _ => Err(()),
-            }
-        }
-    }
-
-    println!("Enter a day where you want the commit to start from [Mon, Tue, Wed...etc] in this exact format");
-    let mut day = String::new();
-    io::stdin()
-        .read_line(&mut day)
-        .expect("Failed to read line for day");
-    let day = day.trim().to_string();
-
-    println!("Enter a month where you want the commit to start from [Jan, Feb, Mar...etc] in this exact format");
-    let mut month = String::new();
-    io::stdin()
-        .read_line(&mut month)
-        .expect("Failed to read line for month");
-    let month = month.trim().to_string();
-
-    (day, month)
-}
