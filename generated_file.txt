@@ -1,32 +1,13 @@
-        Jun,
-        Jul,
-        Aug,
-        Sep,
-        Oct,
-        Nov,
-        Dec,
+    enum Date {
+        Mon,
+        Tue,
+        Wed,
+        Thu,
+        Fri,
+        Sat,
+        Sun,
     }
 
-    impl FromStr for Date {
-        type Err = ();
-
-        fn from_str(input: &str) -> Result<Date, Self::Err> {
-            match input {
-                "Mon" => Ok(Date::Mon),
-                "Tue" => Ok(Date::Tue),
-                "Wed" => Ok(Date::Wed),
-                "Thu" => Ok(Date::Thu),
-                "Fri" => Ok(Date::Fri),
-                "Sat" => Ok(Date::Sat),
-                "Sun" => Ok(Date::Sun),
-                _ => Err(()),
-            }
-        }
-    }
-
-    impl FromStr for Month {
-        type Err = ();
-
-        fn from_str(input: &str) -> Result<Month, Self::Err> {
-            match input {
-                "Jan" => Ok(Month::Jan),
+    enum Month {
+        Jan,
+        Feb,
