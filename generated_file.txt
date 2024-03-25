@@ -1,3 +1,8 @@
+        let _random_second = rand::thread_rng().gen_range(10..=59);
+        println!("{}", random_increments);
+        break;
+    }
+}
 fn user_inputs() -> (String, String) {
     enum Date {
         Mon,
@@ -33,28 +38,3 @@ fn user_inputs() -> (String, String) {
                 "Tue" => Ok(Date::Tue),
                 "Wed" => Ok(Date::Wed),
                 "Thu" => Ok(Date::Thu),
-                "Fri" => Ok(Date::Fri),
-                "Sat" => Ok(Date::Sat),
-                "Sun" => Ok(Date::Sun),
-                _ => Err(()),
-            }
-        }
-    }
-
-    impl FromStr for Month {
-        type Err = ();
-
-        fn from_str(input: &str) -> Result<Month, Self::Err> {
-            match input {
-                "Jan" => Ok(Month::Jan),
-                "Feb" => Ok(Month::Feb),
-                "Mar" => Ok(Month::Mar),
-                "Apr" => Ok(Month::Apr),
-                "May" => Ok(Month::May),
-                "Jun" => Ok(Month::Jun),
-                "Jul" => Ok(Month::Jul),
-                "Aug" => Ok(Month::Aug),
-                "Sep" => Ok(Month::Sep),
-                "Oct" => Ok(Month::Oct),
-                "Nov" => Ok(Month::Nov),
-                "Dec" => Ok(Month::Dec),
