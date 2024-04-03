@@ -1,3 +1,15 @@
+}
+
+fn function_that_does_the_job(daily_commits: i32, random_increments: i32, _day: String, _month: String) {
+    loop {
+        for _ in 0..daily_commits {
+            let output = Command::new("git")
+                .arg("push")
+                .arg("origin")
+                .arg("main")
+                .stdout(Stdio::inherit())
+                .stderr(Stdio::inherit())
+                .output()
                 .expect("Failed to execute git push command");
             println!("{}", String::from_utf8_lossy(&output.stdout));
             if !output.status.success() {
@@ -32,12 +44,3 @@ fn user_inputs() -> (String, String) {
         Jul,
         Aug,
         Sep,
-        Oct,
-        Nov,
-        Dec,
-    }
-
-    impl FromStr for Date {
-        type Err = ();
-
-        fn from_str(input: &str) -> Result<Date, Self::Err> {
