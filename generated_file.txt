@@ -1,9 +1,3 @@
-}
-
-fn function_that_does_the_job(daily_commits: i32, random_increments: i32, _day: String, _month: String) {
-    loop {
-        for _ in 0..daily_commits {
-            let output = Command::new("git")
                 .arg("push")
                 .arg("origin")
                 .arg("main")
@@ -35,12 +29,3 @@ fn user_inputs() -> (String, String) {
     }
 
     enum Month {
-        Jan,
-        Feb,
-        Mar,
-        Apr,
-        May,
-        Jun,
-        Jul,
-        Aug,
-        Sep,
