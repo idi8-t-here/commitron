@@ -4,5 +4,5 @@ Last but not least it utilizes code rabbits api to write code review for your co
 
 ->explicitly made with the purpose of aiding myself in finding a job, where I'm from they like to look at your github like that means anything
 
-->Anyways if you'd like to contribute to this mad crusade of a git commit bot but over-engineered, feel free to fork and get back to me.
+->Anyways if you'd like to contribute to this mad crusade of a git commit bot but over-engineered, feel free to fork.
 
